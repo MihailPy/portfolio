@@ -42,7 +42,7 @@ function createProjectCard(repo, config) {
 
     try {
       const readme = await getReadme(repo);
-      dialogContent.innerHTML = renderMarkdown(readme);
+      dialogContent.innerHTML = renderMarkdown(readme, repo);
     } catch {
       dialogContent.innerHTML = "<p>README не найден или не удалось загрузить.</p>";
     }

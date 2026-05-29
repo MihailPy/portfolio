@@ -170,3 +170,86 @@ h1 {
 .markdown code {
   color: #ddd6fe;
 }
+
+.markdown h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.markdown h2 {
+  font-size: 24px;
+}
+
+.markdown h3 {
+  font-size: 20px;
+}
+
+.markdown h1:first-child,
+.markdown h2:first-child,
+.markdown h3:first-child {
+  margin-top: 0;
+}
+
+.markdown p {
+  color: var(--muted);
+}
+
+.markdown a {
+  color: var(--accent);
+}
+
+.markdown ul,
+.markdown ol {
+  padding-left: 24px;
+}
+
+.markdown li {
+  margin: 6px 0;
+}
+
+.markdown blockquote {
+  margin: 18px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+}
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  overflow: hidden;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid var(--line);
+  padding: 10px;
+  text-align: left;
+}
+
+.markdown th {
+  background: var(--surface-2);
+}
+
+.markdown img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.dialog__header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.dialog__header {
+  align-items: center;
+}
+
+.dialog__header .button {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+}
