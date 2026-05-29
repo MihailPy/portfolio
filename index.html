@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MihailPy — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">MihailPy / Developer Portfolio</p>
+      <h1>Python, Go, automation and practical tools</h1>
+      <p class="hero__text">
+        Портфолио проектов: desktop-приложения, CLI-инструменты,
+        Telegram-автоматизация и frontend-решения.
+      </p>
+      <div class="hero__links">
+        <a href="https://github.com/MihailPy" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="section__header">
+        <h2>Projects</h2>
+        <p>Проекты подгружаются из публичных репозиториев GitHub с topic <code>portfolio</code>.</p>
+      </div>
+
+      <div id="status" class="status">Загружаю проекты...</div>
+      <div id="projects" class="projects"></div>
+    </section>
+  </main>
+
+  <dialog id="project-dialog" class="dialog">
+    <div class="dialog__header">
+      <h2 id="dialog-title"></h2>
+      <button id="dialog-close" class="button button--ghost">Закрыть</button>
+    </div>
+    <article id="dialog-content" class="markdown"></article>
+  </dialog>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
