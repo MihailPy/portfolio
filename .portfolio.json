@@ -1,0 +1,21 @@
+{
+  "title": "Developer Portfolio",
+  "status": "in-development",
+  "category": "Static website",
+  "priority": 5,
+  "stack": [
+    "HTML5",
+    "CSS3",
+    "Vanilla JavaScript",
+    "GitHub API",
+    "GitHub Pages"
+  ],
+  "summary": "Статический сайт-портфолио, который автоматически загружает проекты из публичных GitHub-репозиториев по topic portfolio.",
+  "highlights": [
+    "Автоматический поиск проектов через GitHub API",
+    "Карточки проектов из .portfolio.json",
+    "README проектов отображаются в модальном окне",
+    "Markdown-рендеринг на клиенте",
+    "Деплой через GitHub Pages"
+  ]
+}
