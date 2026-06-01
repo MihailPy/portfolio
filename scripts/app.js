@@ -9,6 +9,11 @@ const dialogTitle = document.querySelector("#dialog-title");
 const dialogContent = document.querySelector("#dialog-content");
 const dialogClose = document.querySelector("#dialog-close");
 
+const filtersEl = document.querySelector("#filters");
+
+let allProjects = [];
+let activeFilter = "All";
+
 dialogClose.addEventListener("click", () => dialog.close());
 
 function createProjectCard(repo, config) {
@@ -60,6 +65,52 @@ function createProjectCard(repo, config) {
   return card;
 }
 
+function renderProjects(projects) {
+  projectsEl.innerHTML = "";
+
+  projects.forEach(({ repo, config }) => {
+    projectsEl.append(createProjectCard(repo, config));
+  });
+}
+
+function renderFilters(projects) {
+  const stacks = new Set();
+
+  projects.forEach(({ config }) => {
+    config.stack?.forEach((item) => stacks.add(item));
+  });
+
+  const filters = ["All", ...Array.from(stacks).sort()];
+
+  filtersEl.innerHTML = filters
+    .map((filter) => {
+      const activeClass = filter === activeFilter ? "is-active" : "";
+
+      return `
+        <button class="filter ${activeClass}" data-filter="${filter}">
+          ${filter}
+        </button>
+      `;
+    })
+    .join("");
+
+  filtersEl.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.filter;
+
+      const filteredProjects =
+        activeFilter === "All"
+          ? allProjects
+          : allProjects.filter(({ config }) =>
+            config.stack?.includes(activeFilter)
+          );
+
+      renderFilters(allProjects);
+      renderProjects(filteredProjects);
+    });
+  });
+}
+
 async function init() {
   try {
     const repos = await getPortfolioRepos();
@@ -84,10 +135,9 @@ async function init() {
       return (a.config.priority ?? 999) - (b.config.priority ?? 999);
     });
 
-    projectsEl.innerHTML = "";
-    projects.forEach(({ repo, config }) => {
-      projectsEl.append(createProjectCard(repo, config));
-    });
+    allProjects = projects;
+    renderFilters(allProjects);
+    renderProjects(allProjects);
 
     statusEl.textContent = "";
   } catch (error) {
