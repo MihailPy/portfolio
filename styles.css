@@ -20,6 +20,10 @@ body {
   color: var(--text);
 }
 
+body.is-dialog-open {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
 }

@@ -14,7 +14,12 @@ const filtersEl = document.querySelector("#filters");
 let allProjects = [];
 let activeFilter = "All";
 
-dialogClose.addEventListener("click", () => dialog.close());
+dialogClose.addEventListener("click", () => {
+  dialog.close();
+});
+dialog.addEventListener("close", () => {
+  document.body.classList.remove("is-dialog-open");
+});
 
 function createProjectCard(repo, config) {
   const card = document.createElement("article");
@@ -53,6 +58,7 @@ function createProjectCard(repo, config) {
     dialogTitle.textContent = config.title ?? repo.name;
     dialogContent.innerHTML = "<p>Загружаю README...</p>";
     dialog.showModal();
+    document.body.classList.add("is-dialog-open");
 
     try {
       const readme = await getReadme(repo);
