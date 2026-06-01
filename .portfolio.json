@@ -17,5 +17,6 @@
     "README проектов отображаются в модальном окне",
     "Markdown-рендеринг на клиенте",
     "Деплой через GitHub Pages"
-  ]
+  ],
+  "demoUrl": "https://mihailpy.github.io/portfolio/"
 }
