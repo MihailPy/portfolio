@@ -19,6 +19,14 @@ function createProjectCard(repo, config) {
     ?.map((item) => `<span class="tag">${item}</span>`)
     .join("") ?? "";
 
+  const liveUrl = config.demoUrl ?? (
+    repo.has_pages ? `https://mihailpy.github.io/${repo.name}/` : null
+  );
+
+  const liveButton = liveUrl
+    ? `<a class="button" href="${liveUrl}" target="_blank">Live</a>`
+    : "";
+
   card.innerHTML = `
     <h3>${config.title ?? repo.name}</h3>
     <p>${config.summary ?? repo.description ?? "Описание пока не добавлено."}</p>
@@ -31,6 +39,7 @@ function createProjectCard(repo, config) {
 
     <div class="card__actions">
       <button class="button" data-action="readme">Подробнее</button>
+      ${liveButton}
       <a class="button button--ghost" href="${repo.html_url}" target="_blank">GitHub</a>
     </div>
   `;
