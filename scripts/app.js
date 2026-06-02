@@ -117,12 +117,23 @@ function renderFilters(projects) {
   });
 }
 
+function setStatus(type, message) {
+  statusEl.innerHTML = `
+    <div class="notice notice--${type}">
+      ${message}
+    </div>
+  `;
+}
+
 async function init() {
   try {
     const repos = await getPortfolioRepos();
 
     if (repos.length === 0) {
-      statusEl.textContent = "Пока нет репозиториев с topic portfolio.";
+      setStatus(
+        "empty",
+        "<strong>Проекты не найдены.</strong><br>Добавь topic <code>portfolio</code> и файл <code>.portfolio.json</code> в нужные репозитории."
+      );
       return;
     }
 
@@ -145,10 +156,13 @@ async function init() {
     renderFilters(allProjects);
     renderProjects(allProjects);
 
-    statusEl.textContent = "";
+    statusEl.innerHTML = "";
   } catch (error) {
     console.error(error);
-    statusEl.textContent = "Не удалось загрузить проекты.";
+    setStatus(
+      "error",
+      "<strong>Не удалось загрузить проекты.</strong><br>Проверь подключение или лимиты GitHub API."
+    );
   }
 }
 

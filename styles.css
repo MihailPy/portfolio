@@ -322,3 +322,16 @@ h1 {
     overflow-x: auto;
   }
 }
+
+.notice {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.notice strong {
+  color: var(--text);
+}
