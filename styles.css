@@ -368,3 +368,13 @@ h1 {
 .footer__links a:hover {
   color: var(--text);
 }
+
+.about {
+  max-width: 760px;
+}
+
+.about p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
