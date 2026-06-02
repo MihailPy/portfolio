@@ -378,3 +378,25 @@ h1 {
   line-height: 1.8;
   margin: 0 0 16px;
 }
+
+.search {
+  width: 100%;
+  max-width: 420px;
+  min-height: 42px;
+  margin: 0 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 16px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.search::placeholder {
+  color: var(--muted);
+}
+
+.search:focus {
+  outline: none;
+  border-color: var(--accent);
+}

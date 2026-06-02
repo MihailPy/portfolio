@@ -11,8 +11,11 @@ const dialogClose = document.querySelector("#dialog-close");
 
 const filtersEl = document.querySelector("#filters");
 
+const searchEl = document.querySelector("#project-search");
+
 let allProjects = [];
 let activeFilter = "All";
+let searchQuery = "";
 
 dialogClose.addEventListener("click", () => {
   dialog.close();
@@ -103,6 +106,8 @@ function renderFilters(projects) {
   filtersEl.querySelectorAll("[data-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       activeFilter = button.dataset.filter;
+      renderFilters(allProjects);
+      renderProjects(getVisibleProjects());
 
       const filteredProjects =
         activeFilter === "All"
@@ -124,6 +129,29 @@ function setStatus(type, message) {
     </div>
   `;
 }
+
+function getVisibleProjects() {
+  return allProjects.filter(({ config }) => {
+    const matchesFilter =
+      activeFilter === "All" || config.stack?.includes(activeFilter);
+
+    const text = [
+      config.title,
+      config.summary,
+      config.category,
+      config.status,
+      ...(config.stack ?? []),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    const matchesSearch = text.includes(searchQuery.toLowerCase());
+
+    return matchesFilter && matchesSearch;
+  });
+}
+
+
 
 async function init() {
   try {
@@ -165,5 +193,18 @@ async function init() {
     );
   }
 }
+
+dialogClose.addEventListener("click", () => {
+  dialog.close();
+});
+
+dialog.addEventListener("close", () => {
+  document.body.classList.remove("is-dialog-open");
+});
+
+searchEl.addEventListener("input", () => {
+  searchQuery = searchEl.value.trim();
+  renderProjects(getVisibleProjects());
+});
 
 init();
