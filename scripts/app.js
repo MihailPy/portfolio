@@ -77,6 +77,16 @@ function createProjectCard(repo, config) {
 function renderProjects(projects) {
   projectsEl.innerHTML = "";
 
+  if (projects.length === 0) {
+    projectsEl.innerHTML = `
+      <div class="notice">
+        <strong>Ничего не найдено.</strong><br>
+        Попробуй изменить фильтр или поисковый запрос.
+      </div>
+    `;
+    return;
+  }
+
   projects.forEach(({ repo, config }) => {
     projectsEl.append(createProjectCard(repo, config));
   });

@@ -412,3 +412,7 @@ h1 {
 .search:focus {
   border-color: var(--accent);
 }
+
+.projects .notice {
+  grid-column: 1 / -1;
+}
