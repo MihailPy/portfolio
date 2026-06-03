@@ -14,6 +14,7 @@ const filtersEl = document.querySelector("#filters");
 
 const searchEl = document.querySelector("#project-search");
 const resetSearchEl = document.querySelector("#reset-search");
+const activeStateEl = document.querySelector("#active-state");
 
 let allProjects = [];
 let activeFilter = "All";
@@ -93,6 +94,7 @@ function renderProjects(projects) {
   projects.forEach(({ repo, config }) => {
     projectsEl.append(createProjectCard(repo, config));
   });
+  renderActiveState();
 }
 
 function renderFilters(projects) {
@@ -172,6 +174,22 @@ resetSearchEl.addEventListener("click", () => {
   renderFilters(allProjects);
   renderProjects(allProjects);
 });
+
+function renderActiveState() {
+  const parts = [];
+
+  if (activeFilter !== "All") {
+    parts.push(`filter: ${activeFilter}`);
+  }
+
+  if (searchQuery) {
+    parts.push(`search: ${searchQuery}`);
+  }
+
+  activeStateEl.textContent = parts.length
+    ? `Active ${parts.join(", ")}`
+    : "";
+}
 
 async function init() {
   try {

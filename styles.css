@@ -426,3 +426,10 @@ h1 {
   font-size: 16px;
   font-weight: 500;
 }
+
+.active-state {
+  margin: -8px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
