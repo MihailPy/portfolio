@@ -16,6 +16,9 @@ const searchEl = document.querySelector("#project-search");
 const resetSearchEl = document.querySelector("#reset-search");
 const activeStateEl = document.querySelector("#active-state");
 
+const sortEl = document.querySelector("#project-sort");
+let activeSort = "priority";
+
 let allProjects = [];
 let activeFilter = "All";
 let searchQuery = "";
@@ -146,7 +149,7 @@ function setStatus(type, message) {
 }
 
 function getVisibleProjects() {
-  return allProjects.filter(({ config }) => {
+  const filteredProjects = allProjects.filter(({ config }) => {
     const matchesFilter =
       activeFilter === "All" || config.stack?.includes(activeFilter);
 
@@ -164,6 +167,8 @@ function getVisibleProjects() {
 
     return matchesFilter && matchesSearch;
   });
+
+  return sortProjects(filteredProjects);
 }
 
 resetSearchEl.addEventListener("click", () => {
@@ -189,6 +194,19 @@ function renderActiveState() {
   activeStateEl.textContent = parts.length
     ? `Active ${parts.join(", ")}`
     : "";
+}
+
+function sortProjects(projects) {
+  return [...projects].sort((a, b) => {
+    if (activeSort === "priority") {
+      return (a.config.priority ?? 999) - (b.config.priority ?? 999);
+    }
+
+    const aValue = String(a.config[activeSort] ?? "").toLowerCase();
+    const bValue = String(b.config[activeSort] ?? "").toLowerCase();
+
+    return aValue.localeCompare(bValue);
+  });
 }
 
 async function init() {
@@ -242,6 +260,11 @@ dialog.addEventListener("close", () => {
 
 searchEl.addEventListener("input", () => {
   searchQuery = searchEl.value.trim();
+  renderProjects(getVisibleProjects());
+});
+
+sortEl.addEventListener("change", () => {
+  activeSort = sortEl.value;
   renderProjects(getVisibleProjects());
 });
 

@@ -433,3 +433,29 @@ h1 {
   font-size: 14px;
 }
 
+.sort-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.sort-control select {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 36px 0 14px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sort-control select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
