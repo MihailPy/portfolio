@@ -3,6 +3,7 @@ import { renderMarkdown } from "./markdown.js";
 
 const projectsEl = document.querySelector("#projects");
 const statusEl = document.querySelector("#status");
+const projectsCountEl = document.querySelector("#projects-count");
 
 const dialog = document.querySelector("#project-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
@@ -77,6 +78,7 @@ function createProjectCard(repo, config) {
 
 function renderProjects(projects) {
   projectsEl.innerHTML = "";
+  projectsCountEl.textContent = `(${projects.length})`;
 
   if (projects.length === 0) {
     projectsEl.innerHTML = `

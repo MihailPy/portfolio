@@ -420,3 +420,9 @@ h1 {
 .reset-button {
   margin: 0 0 20px;
 }
+
+.projects-count {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
