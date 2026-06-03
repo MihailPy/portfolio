@@ -12,6 +12,7 @@ const dialogClose = document.querySelector("#dialog-close");
 const filtersEl = document.querySelector("#filters");
 
 const searchEl = document.querySelector("#project-search");
+const resetSearchEl = document.querySelector("#reset-search");
 
 let allProjects = [];
 let activeFilter = "All";
@@ -161,7 +162,14 @@ function getVisibleProjects() {
   });
 }
 
+resetSearchEl.addEventListener("click", () => {
+  activeFilter = "All";
+  searchQuery = "";
+  searchEl.value = "";
 
+  renderFilters(allProjects);
+  renderProjects(allProjects);
+});
 
 async function init() {
   try {
