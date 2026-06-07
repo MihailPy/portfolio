@@ -71,7 +71,54 @@ function createProjectCard(repo, config) {
 
     try {
       const readme = await getReadme(repo);
-      dialogContent.innerHTML = renderMarkdown(readme, repo);
+
+      const stack = (config.stack ?? []).join(" • ");
+
+      const liveUrl = config.demoUrl ?? (
+        repo.has_pages
+          ? `https://mihailpy.github.io/${repo.name}/`
+          : null
+      );
+
+      dialogContent.innerHTML = `
+  <section class="project-header">
+    <div class="project-meta">
+      <span class="project-category">${config.category ?? ""}</span>
+      <span class="project-status">${config.status ?? ""}</span>
+    </div>
+
+    <p class="project-stack">${stack}</p>
+
+    <div class="project-links">
+      <a
+        class="button"
+        href="${repo.html_url}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+      ${liveUrl
+          ? `
+        <a
+          class="button button--primary"
+          href="${liveUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live
+        </a>
+      `
+          : ""
+        }
+    </div>
+  </section>
+
+  <hr class="project-divider">
+
+  ${renderMarkdown(readme, repo)}
+`;
     } catch {
       dialogContent.innerHTML = "<p>README не найден или не удалось загрузить.</p>";
     }
