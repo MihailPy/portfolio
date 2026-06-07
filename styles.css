@@ -465,19 +465,29 @@ h1 {
 }
 
 .project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
-.project-category,
-.project-status {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 13px;
+.project-meta-item {
+  min-width: 160px;
+}
+
+.project-meta-label {
+  display: block;
+  margin-bottom: 4px;
   color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-meta-value {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .project-stack {

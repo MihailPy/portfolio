@@ -83,8 +83,15 @@ function createProjectCard(repo, config) {
       dialogContent.innerHTML = `
   <section class="project-header">
     <div class="project-meta">
-      <span class="project-category">${config.category ?? ""}</span>
-      <span class="project-status">${config.status ?? ""}</span>
+      <div class="project-meta-item">
+        <span class="project-meta-label">Category</span>
+        <span class="project-meta-value">${config.category ?? "—"}</span>
+      </div>
+
+      <div class="project-meta-item">
+        <span class="project-meta-label">Status</span>
+        <span class="project-meta-value">${config.status ?? "—"}</span>
+      </div>
     </div>
 
     <p class="project-stack">${stack}</p>
