@@ -32,7 +32,7 @@ dialog.addEventListener("close", () => {
 
 function createProjectCard(repo, config) {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = config.priority === 1 ? "card card--featured" : "card";
 
   const tags = config.stack
     ?.map((item) => `<span class="tag">${item}</span>`)
@@ -53,6 +53,7 @@ function createProjectCard(repo, config) {
 
   card.innerHTML = `
     <h3>${config.title ?? repo.name}</h3>
+    ${config.priority === 1 ? `<span class="featured-label">Featured project</span>` : ""}
     <p>${config.summary ?? repo.description ?? "Описание пока не добавлено."}</p>
 
     ${highlights

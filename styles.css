@@ -117,7 +117,7 @@ h1 {
 }
 
 .card h3 {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 
 .card p {
@@ -517,4 +517,19 @@ h1 {
   border: 0;
   border-top: 1px solid var(--line);
   margin: 24px 0;
+}
+
+.card--featured {
+  border-color: var(--accent);
+  background:
+    linear-gradient(135deg, rgba(139, 92, 246, 0.12), transparent 36%),
+    var(--surface);
+}
+
+.featured-label {
+  display: inline-flex;
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
 }
