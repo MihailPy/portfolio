@@ -46,9 +46,23 @@ function createProjectCard(repo, config) {
     ? `<a class="button" href="${liveUrl}" target="_blank">Live</a>`
     : "";
 
+  const highlights = config.highlights
+    ?.slice(0, 3)
+    .map((item) => `<li>${item}</li>`)
+    .join("") ?? "";
+
   card.innerHTML = `
     <h3>${config.title ?? repo.name}</h3>
     <p>${config.summary ?? repo.description ?? "Описание пока не добавлено."}</p>
+
+    ${highlights
+      ? `
+          <ul class="card-highlights">
+            ${highlights}
+          </ul>
+        `
+      : ""
+    }
 
     <div class="tags">
       ${config.status ? `<span class="tag">${config.status}</span>` : ""}
