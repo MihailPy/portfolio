@@ -466,8 +466,8 @@ h1 {
 
 .project-meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 18px;
   margin-bottom: 18px;
 }
 

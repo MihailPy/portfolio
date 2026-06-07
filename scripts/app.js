@@ -92,6 +92,23 @@ function createProjectCard(repo, config) {
         <span class="project-meta-label">Status</span>
         <span class="project-meta-value">${config.status ?? "—"}</span>
       </div>
+
+      <div class="project-meta-item">
+        <span class="project-meta-label">Language</span>
+        <span class="project-meta-value">${repo.language ?? "—"}</span>
+      </div>
+
+      <div class="project-meta-item">
+        <span class="project-meta-label">Stars</span>
+        <span class="project-meta-value">${repo.stargazers_count ?? 0}</span>
+      </div>
+
+      <div class="project-meta-item">
+        <span class="project-meta-label">Updated</span>
+        <span class="project-meta-value">
+          ${new Date(repo.updated_at).toLocaleDateString("en-GB")}
+        </span>
+      </div>
     </div>
 
     <p class="project-stack">${stack}</p>
