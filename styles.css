@@ -640,3 +640,17 @@ h1 {
   color: var(--muted);
   line-height: 1.6;
 }
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--text);
+}
