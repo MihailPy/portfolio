@@ -576,3 +576,38 @@ h1 {
   border-color: rgba(234, 179, 8, 0.45);
   color: #fde68a;
 }
+
+.tag--python {
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #93c5fd;
+}
+
+.tag--go {
+  border-color: rgba(45, 212, 191, 0.45);
+  color: #5eead4;
+}
+
+.tag--javascript {
+  border-color: rgba(234, 179, 8, 0.45);
+  color: #fde68a;
+}
+
+.tag--html {
+  border-color: rgba(249, 115, 22, 0.45);
+  color: #fdba74;
+}
+
+.tag--css {
+  border-color: rgba(99, 102, 241, 0.45);
+  color: #a5b4fc;
+}
+
+.tag--pyqt {
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #86efac;
+}
+
+.tag--telegram {
+  border-color: rgba(14, 165, 233, 0.45);
+  color: #7dd3fc;
+}

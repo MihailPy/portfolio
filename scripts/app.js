@@ -34,8 +34,22 @@ function createProjectCard(repo, config) {
   const card = document.createElement("article");
   card.className = config.priority === 1 ? "card card--featured" : "card";
 
+  const getStackClass = (item) => {
+    const normalized = item.toLowerCase().replaceAll(" ", "-");
+
+    if (normalized.includes("python")) return "tag--python";
+    if (normalized.includes("go")) return "tag--go";
+    if (normalized.includes("javascript")) return "tag--javascript";
+    if (normalized.includes("html")) return "tag--html";
+    if (normalized.includes("css")) return "tag--css";
+    if (normalized.includes("pyqt")) return "tag--pyqt";
+    if (normalized.includes("telegram") || normalized.includes("telethon")) return "tag--telegram";
+
+    return "";
+  };
+
   const tags = config.stack
-    ?.map((item) => `<span class="tag">${item}</span>`)
+    ?.map((item) => `<span class="tag ${getStackClass(item)}">${item}</span>`)
     .join("") ?? "";
 
   const liveUrl = config.demoUrl ?? (
