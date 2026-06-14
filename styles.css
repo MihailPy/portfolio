@@ -533,3 +533,16 @@ h1 {
   font-size: 13px;
   font-weight: 700;
 }
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card-meta span {
+  white-space: nowrap;
+}

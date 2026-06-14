@@ -51,9 +51,21 @@ function createProjectCard(repo, config) {
     .map((item) => `<li>${item}</li>`)
     .join("") ?? "";
 
+  const updatedAt = new Date(repo.updated_at).toLocaleDateString("en-GB");
+
+  const repoMeta = `
+    <div class="card-meta">
+      <span>${repo.language ?? "—"}</span>
+      <span>★ ${repo.stargazers_count ?? 0}</span>
+      <span>Updated ${updatedAt}</span>
+    </div>
+  `;
+
   card.innerHTML = `
     <h3>${config.title ?? repo.name}</h3>
     ${config.priority === 1 ? `<span class="featured-label">Featured project</span>` : ""}
+    ${repoMeta}
+
     <p>${config.summary ?? repo.description ?? "Описание пока не добавлено."}</p>
 
     ${highlights
