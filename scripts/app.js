@@ -61,9 +61,17 @@ function createProjectCard(repo, config) {
     </div>
   `;
 
+  const statusClass = config.status
+    ? `status-badge status-badge--${config.status}`
+    : "status-badge";
+
   card.innerHTML = `
     <h3>${config.title ?? repo.name}</h3>
-    ${config.priority === 1 ? `<span class="featured-label">Featured project</span>` : ""}
+    <div class="card-labels">
+      ${config.priority === 1 ? `<span class="featured-label">Featured project</span>` : ""}
+      ${config.status ? `<span class="${statusClass}">${config.status}</span>` : ""}
+    </div>
+
     ${repoMeta}
 
     <p>${config.summary ?? repo.description ?? "Описание пока не добавлено."}</p>
