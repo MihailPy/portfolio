@@ -654,3 +654,20 @@ h1 {
   background: var(--surface);
   color: var(--text);
 }
+
+.format-box {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 18px;
+}
+
+.format-box pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.format-box code {
+  color: #ddd6fe;
+  line-height: 1.7;
+}
