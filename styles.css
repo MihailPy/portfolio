@@ -671,3 +671,7 @@ h1 {
   color: #ddd6fe;
   line-height: 1.7;
 }
+
+html {
+  scroll-behavior: smooth;
+}
