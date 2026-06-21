@@ -188,6 +188,15 @@ function createProjectCard(repo, config) {
 
       <a
         class="button button--ghost"
+        href="https://github.com/${repo.full_name}/blob/${repo.default_branch}/README.md"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        README
+      </a>
+
+      <a
+        class="button button--ghost"
         href="https://github.com/${repo.full_name}/blob/${repo.default_branch}/.portfolio.json"
         target="_blank"
         rel="noopener noreferrer"
