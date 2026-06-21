@@ -185,6 +185,15 @@ function createProjectCard(repo, config) {
       `
           : ""
         }
+
+      <a
+        class="button button--ghost"
+        href="https://github.com/${repo.full_name}/blob/${repo.default_branch}/.portfolio.json"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Metadata
+      </a>
     </div>
   </section>
 
